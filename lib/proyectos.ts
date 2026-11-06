@@ -211,7 +211,10 @@ export const proyectos: Proyecto[] = [
     rol: "Desarrollador",
     captura: "/proyectos/geldo.png",
     stack: ["Python", "discord.py", "SQLite", "GitHub Actions", "systemd", "Oracle Cloud"],
-    enlaces: [{ etiqueta: "Ver sitio", url: "https://geldo.vercel.app" }],
+    enlaces: [
+      { etiqueta: "Ver sitio", url: "https://geldo.vercel.app" },
+      { etiqueta: "Ver código", url: "https://github.com/DylanSrz/geldo-bot" },
+    ],
     problema:
       "Reunir en un solo bot economía, casino, niveles, moderación y tickets, con los datos de cada servidor aislados.",
     aportes: [
