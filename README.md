@@ -18,3 +18,9 @@ Los proyectos están en `lib/proyectos.ts`. Cada uno genera su página en `/proy
 ## Despliegue
 
 Se publica en Vercel importando el repositorio. No necesita variables de entorno.
+
+## Pendientes
+
+Segunda fase:
+
+- [ ] Botón para descargar el CV. Falta el PDF, que irá en `public/`.
