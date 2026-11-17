@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-16T00:00:00.000Z",
+  "title": "Design System: DylanSrz",
+  "extensions": {
+    "colorMeta": {
+      "acero-950": { "role": "neutral", "displayName": "Acero noche", "canonical": "#101214", "tonalRamp": ["#0b0c0d", "#101214", "#16181a", "#1d2023", "#24282b", "#2c3134", "#3a3e40", "#4a4f52"] },
+      "acero-900": { "role": "neutral", "displayName": "Acero base", "canonical": "#16181a", "tonalRamp": ["#0b0c0d", "#101214", "#16181a", "#1d2023", "#24282b", "#2c3134", "#3a3e40", "#4a4f52"] },
+      "acero-800": { "role": "neutral", "displayName": "Acero placa", "canonical": "#1d2023", "tonalRamp": ["#0b0c0d", "#101214", "#16181a", "#1d2023", "#24282b", "#2c3134", "#3a3e40", "#4a4f52"] },
+      "acero-700": { "role": "neutral", "displayName": "Acero costilla", "canonical": "#24282b", "tonalRamp": ["#0b0c0d", "#101214", "#16181a", "#1d2023", "#24282b", "#2c3134", "#3a3e40", "#4a4f52"] },
+      "acero-600": { "role": "neutral", "displayName": "Acero claro", "canonical": "#2c3134", "tonalRamp": ["#0b0c0d", "#101214", "#16181a", "#1d2023", "#24282b", "#2c3134", "#3a3e40", "#4a4f52"] },
+      "pintura": { "role": "neutral", "displayName": "Pintura", "canonical": "#efeadf", "tonalRamp": ["#3a3833", "#58554e", "#78746b", "#9a9e99", "#c6c7bf", "#dcd8cd", "#efeadf", "#f8f6f1"] },
+      "pintura-suave": { "role": "neutral", "displayName": "Pintura suave", "canonical": "#c6c7bf", "tonalRamp": ["#3a3833", "#58554e", "#78746b", "#9a9e99", "#c6c7bf", "#dcd8cd", "#efeadf", "#f8f6f1"] },
+      "pintura-tenue": { "role": "neutral", "displayName": "Pintura tenue", "canonical": "#9a9e99", "tonalRamp": ["#3a3833", "#58554e", "#78746b", "#9a9e99", "#c6c7bf", "#dcd8cd", "#efeadf", "#f8f6f1"] },
+      "lima": { "role": "primary", "displayName": "Lima de seguridad", "canonical": "#d4f03c", "tonalRamp": ["#2c3308", "#4a560f", "#6b7b17", "#8fa31f", "#b4cc2a", "#d4f03c", "#e3f67f", "#f2fbc4"] },
+      "tinta": { "role": "neutral", "displayName": "Tinta", "canonical": "#16181a", "tonalRamp": ["#0b0c0d", "#16181a", "#24282b", "#3a3e40", "#55595b", "#74787a", "#9a9e99", "#c6c7bf"] },
+      "tinta-suave": { "role": "neutral", "displayName": "Tinta suave", "canonical": "#3a3e40", "tonalRamp": ["#0b0c0d", "#16181a", "#24282b", "#3a3e40", "#55595b", "#74787a", "#9a9e99", "#c6c7bf"] }
+    },
+    "typographyMeta": {
+      "nombre": { "displayName": "Nombre", "purpose": "Solo DYLANSRZ en el hero, a todo el ancho del contenedor." },
+      "display": { "displayName": "Display", "purpose": "Títulos de sección, nombres de carga, títulos de la ficha y elementos del stack." },
+      "estarcido": { "displayName": "Estarcido", "purpose": "Códigos de carga, LOCODE, marca de la cabecera y marca del pie." },
+      "body": { "displayName": "Texto", "purpose": "Párrafos y resúmenes." },
+      "label": { "displayName": "Dato", "purpose": "Navegación, etiquetas de columna, términos de ficha, estados y botones." },
+      "codigo": { "displayName": "Código", "purpose": "Hosts de destino y rutas de API." }
+    },
+    "shadows": [],
+    "surfaces": [
+      { "name": "acero", "value": "repeating-linear-gradient(90deg, #24282b 0 calc(var(--costilla) * 0.447), #1d2023 calc(var(--costilla) * 0.447) calc(var(--costilla) * 0.5), #2c3134 calc(var(--costilla) * 0.5) calc(var(--costilla) * 0.947), #202427 calc(var(--costilla) * 0.947) var(--costilla))", "purpose": "Acero corrugado: textura del hero, Stack y cabecera de ficha." },
+      { "name": "foco-de-patio", "value": "radial-gradient(38rem circle at var(--luz-x, 78%) var(--luz-y, 8%), color-mix(in srgb, #efeadf 11%, transparent), transparent 70%), linear-gradient(180deg, rgb(0 0 0 / 0.32), transparent 28%, transparent 68%, rgb(0 0 0 / 0.42))", "purpose": "Única luz sobre el acero; sigue al puntero con ratón y sin movimiento reducido." }
+    ],
+    "motion": [
+      { "name": "grua", "value": "cubic-bezier(0.3, 0, 0.1, 1)", "purpose": "Curva de todo el movimiento: mecánica, sin rebote." },
+      { "name": "pintar", "value": "clip-path inset(0 0 100% 0) -> inset(0 0 -10% 0), 520ms, retraso 55ms por letra", "purpose": "Las letras de DYLANSRZ se pintan de arriba abajo." },
+      { "name": "desplegar", "value": "clip-path inset(0 100% 0 0) -> inset(0), 620ms", "purpose": "La franja lima se despliega; las placas con captura se abren con el scroll (animation-timeline: view())." },
+      { "name": "relleno-boton", "value": "background-size 0% -> 100%, 180ms", "purpose": "Relleno de botones al pasar el cursor o enfocar." },
+      { "name": "menu-movil", "value": "clip-path inset(0 0 100% 0) -> inset(0), 300ms", "purpose": "El menú móvil baja como una persiana." },
+      { "name": "view-transition", "value": "420ms cubic-bezier(0.3, 0, 0.1, 1)", "purpose": "La placa viaja entre el manifiesto y la ficha." },
+      { "name": "reduced-motion", "value": "transition y animation a 0.01ms; view transitions desactivadas", "purpose": "Todo el movimiento se apaga con prefers-reduced-motion: reduce." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "40rem" },
+      { "name": "md", "value": "48rem" },
+      { "name": "lg", "value": "64rem" },
+      { "name": "xl", "value": "80rem" },
+      { "name": "3xl", "value": "112rem" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón en tinta",
+      "kind": "button",
+      "refersTo": "boton-tinta",
+      "description": "Acción principal sobre lima o papel.",
+      "html": "<div class=\"ds-lima\"><a class=\"ds-boton ds-boton--tinta\" href=\"#\"><span>VER PROYECTOS</span><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\"><path d=\"M12 4v16M5 13l7 7 7-7\"/></svg></a></div>",
+      "css": ".ds-lima { background: #d4f03c; padding: 24px; } .ds-boton { display: inline-flex; align-items: center; gap: 0.65rem; min-height: 2.875rem; padding: 0.7rem 1.15rem; border: 1.5px solid currentColor; border-radius: 0; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-size: 0% 100%; transition: background-size 180ms cubic-bezier(0.3,0,0.1,1); } .ds-boton svg { transition: transform 180ms cubic-bezier(0.3,0,0.1,1); } .ds-boton:hover, .ds-boton:focus-visible { background-size: 100% 100%; } .ds-boton:hover svg, .ds-boton:focus-visible svg { transform: translate(2px,-2px); } .ds-boton:focus-visible { outline: 2px solid #16181a; outline-offset: 3px; } .ds-boton--tinta { color: #efeadf; background-color: #16181a; border-color: #16181a; background-image: linear-gradient(#2c3134, #2c3134); }"
+    },
+    {
+      "name": "Botón en línea tinta",
+      "kind": "button",
+      "refersTo": "boton-linea-tinta",
+      "description": "Acción secundaria sobre lima o papel.",
+      "html": "<div class=\"ds-lima\"><a class=\"ds-boton ds-boton--linea\" href=\"#\"><span>CONTACTARME</span></a></div>",
+      "css": ".ds-lima { background: #d4f03c; padding: 24px; } .ds-boton { display: inline-flex; align-items: center; gap: 0.65rem; min-height: 2.875rem; padding: 0.7rem 1.15rem; border: 1.5px solid currentColor; border-radius: 0; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-size: 0% 100%; transition: background-size 180ms cubic-bezier(0.3,0,0.1,1); } .ds-boton > span { transition: color 180ms cubic-bezier(0.3,0,0.1,1); } .ds-boton:hover, .ds-boton:focus-visible { background-size: 100% 100%; } .ds-boton:focus-visible { outline: 2px solid #16181a; outline-offset: 3px; } .ds-boton--linea { color: #16181a; } .ds-boton--linea:hover > span, .ds-boton--linea:focus-visible > span { color: #efeadf; }"
+    },
+    {
+      "name": "Botón claro",
+      "kind": "button",
+      "refersTo": "boton-claro",
+      "description": "Acción sobre acero, por ejemplo en la ficha de un proyecto que no está en producción.",
+      "html": "<div class=\"ds-acero\"><a class=\"ds-boton ds-boton--claro\" href=\"#\"><span>CÓDIGO</span><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\"><path d=\"M6 18 18 6M8 6h10v10\"/></svg></a></div>",
+      "css": ".ds-acero { background: #1d2023; padding: 24px; } .ds-boton { display: inline-flex; align-items: center; gap: 0.65rem; min-height: 2.875rem; padding: 0.7rem 1.15rem; border: 1.5px solid currentColor; border-radius: 0; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat; background-size: 0% 100%; transition: background-size 180ms cubic-bezier(0.3,0,0.1,1); } .ds-boton > *, .ds-boton svg { transition: color 180ms cubic-bezier(0.3,0,0.1,1), transform 180ms cubic-bezier(0.3,0,0.1,1); } .ds-boton:hover, .ds-boton:focus-visible { background-size: 100% 100%; } .ds-boton:hover svg { transform: translate(2px,-2px); } .ds-boton:focus-visible { outline: 2px solid #efeadf; outline-offset: 3px; } .ds-boton--claro { color: #efeadf; } .ds-boton--claro:hover > *, .ds-boton--claro:focus-visible > * { color: #16181a; }"
+    },
+    {
+      "name": "Navegación",
+      "kind": "nav",
+      "refersTo": "cabecera",
+      "description": "Cabecera fija con marca en estarcido, secciones en mono y selector de idioma.",
+      "html": "<header class=\"ds-cabecera\"><a class=\"ds-marca\" href=\"#\">DYLANSRZ</a><nav><a class=\"ds-nav\" href=\"#\" aria-current=\"location\">PROYECTOS</a><a class=\"ds-nav\" href=\"#\">SOBRE MÍ</a><a class=\"ds-nav\" href=\"#\">STACK</a><a class=\"ds-nav\" href=\"#\">CONTACTO</a><span class=\"ds-idioma\"><b>ES</b> / <a href=\"#\">EN</a></span></nav></header>",
+      "css": ".ds-cabecera { display: flex; align-items: center; justify-content: space-between; height: 3.75rem; padding: 0 24px; background: #16181a; border-bottom: 1px solid color-mix(in srgb, #efeadf 16%, transparent); } .ds-marca { font-family: 'Big Shoulders Stencil', 'Big Shoulders', sans-serif; font-weight: 700; font-size: 1.7rem; letter-spacing: 0.035em; color: #efeadf; text-decoration: none; } .ds-cabecera nav { display: flex; align-items: center; gap: 2rem; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 0.75rem; letter-spacing: 0.04em; } .ds-nav { position: relative; display: inline-flex; align-items: center; height: 3.75rem; color: #c6c7bf; text-decoration: none; transition: color 160ms linear; } .ds-nav::after { content: ''; position: absolute; inset: auto 0 -1px 0; height: 3px; background: #efeadf; transform: scaleX(0); transform-origin: left; transition: transform 220ms cubic-bezier(0.3,0,0.1,1); } .ds-nav:hover, .ds-nav[aria-current] { color: #efeadf; } .ds-nav[aria-current]::after { transform: scaleX(1); } .ds-nav:focus-visible { outline: 2px solid #efeadf; outline-offset: 3px; } .ds-idioma { color: #9a9e99; } .ds-idioma b { color: #efeadf; font-weight: 500; } .ds-idioma a { color: #c6c7bf; text-underline-offset: 0.22em; }"
+    },
+    {
+      "name": "Marca de estado",
+      "kind": "chip",
+      "refersTo": "estado-vivo",
+      "description": "Cuadrado lima solo para lo que está en producción; vacío para el resto.",
+      "html": "<div class=\"ds-fondo\"><span class=\"ds-estado ds-estado--vivo\">EN PRODUCCIÓN</span><span class=\"ds-estado\">CÓDIGO PÚBLICO</span></div>",
+      "css": ".ds-fondo { display: flex; gap: 2rem; padding: 24px; background: #16181a; color: #c6c7bf; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 0.75rem; letter-spacing: 0.04em; } .ds-estado { display: inline-flex; align-items: center; gap: 0.6rem; } .ds-estado::before { content: ''; width: 0.6rem; height: 0.6rem; flex: none; border: 1.5px solid currentColor; } .ds-estado--vivo { color: #d4f03c; } .ds-estado--vivo::before { background: #d4f03c; border-color: #d4f03c; }"
+    },
+    {
+      "name": "Placa",
+      "kind": "card",
+      "refersTo": "placa",
+      "description": "La puerta de cada carga: barra con código y host, y debajo la captura real o material del repositorio.",
+      "html": "<div class=\"ds-placa\"><div class=\"ds-placa-barra\"><span>DSRZ 04 EQ</span><span>github.com/DylanSrz/ZeroBug</span></div><ul class=\"ds-rutas\"><li><span>GET</span><span>/reservations/availability</span></li><li><span>POST</span><span>/reservations</span></li><li><span>PATCH</span><span>/reservations/:id/cancel</span></li></ul></div>",
+      "css": ".ds-placa { overflow: hidden; border: 1px solid color-mix(in srgb, #efeadf 42%, transparent); background: #1d2023; color: #efeadf; max-width: 420px; } .ds-placa-barra { display: flex; justify-content: space-between; gap: 1rem; padding: 0.625rem 1rem; border-bottom: 1px solid color-mix(in srgb, #efeadf 42%, transparent); color: #c6c7bf; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 0.75rem; letter-spacing: 0.04em; } .ds-rutas { list-style: none; margin: 0; padding: 1.25rem; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 0.8125rem; } .ds-rutas li { display: grid; grid-template-columns: 3.6rem 1fr; gap: 0.5rem; padding: 0.375rem 0; border-bottom: 1px solid color-mix(in srgb, #efeadf 16%, transparent); } .ds-rutas li span:first-child { color: #9a9e99; }"
+    },
+    {
+      "name": "Fila del manifiesto",
+      "kind": "custom",
+      "refersTo": "manifiesto",
+      "description": "Índice de cargas; la fila enfocada sube de peso y las demás se atenúan.",
+      "html": "<ol class=\"ds-manifiesto\"><li class=\"ds-carga\"><span class=\"ds-cod\">DSRZ 01 PR</span><a class=\"ds-nombre\" href=\"#\">DOCTRADERPRO</a><span class=\"ds-vivo\">EN PRODUCCIÓN</span></li><li class=\"ds-carga\"><span class=\"ds-cod\">DSRZ 04 EQ</span><a class=\"ds-nombre\" href=\"#\">ZEROBUG</a><span class=\"ds-otro\">CÓDIGO PÚBLICO</span></li></ol>",
+      "css": ".ds-manifiesto { list-style: none; margin: 0; padding: 0 24px; background: #16181a; color: #efeadf; border-top: 2px solid #efeadf; } .ds-carga { display: grid; grid-template-columns: 7rem 1fr auto; align-items: center; gap: 1.5rem; padding: 0.75rem 0; border-top: 1px solid color-mix(in srgb, #efeadf 16%, transparent); transition: opacity 220ms linear; } .ds-cod { font-family: 'Big Shoulders Stencil', sans-serif; font-weight: 700; letter-spacing: 0.035em; color: #c6c7bf; font-size: 1.125rem; } .ds-nombre { font-family: 'Big Shoulders', 'Arial Narrow', sans-serif; font-variation-settings: 'opsz' 72, 'wght' 700; text-transform: uppercase; font-size: 2rem; line-height: 0.86; color: inherit; text-decoration: none; transition: font-variation-settings 220ms cubic-bezier(0.3,0,0.1,1); } .ds-vivo, .ds-otro { font-family: 'Martian Mono', monospace; font-size: 0.75rem; letter-spacing: 0.04em; } .ds-vivo { color: #d4f03c; } .ds-otro { color: #c6c7bf; } .ds-manifiesto:hover .ds-carga:not(:hover) { opacity: 0.4; } .ds-carga:hover .ds-nombre, .ds-nombre:focus-visible { font-variation-settings: 'opsz' 72, 'wght' 900; } .ds-nombre:focus-visible { outline: 2px solid #efeadf; outline-offset: 4px; }"
+    },
+    {
+      "name": "Fila de contacto",
+      "kind": "custom",
+      "refersTo": "seccion-lima",
+      "description": "Filas sobre lima; la tinta sube desde abajo al pasar el cursor.",
+      "html": "<ul class=\"ds-contacto\"><li class=\"ds-fila\"><span class=\"ds-etq\">LINKEDIN</span><a href=\"#\">in/dylansrz</a></li><li class=\"ds-fila\"><span class=\"ds-etq\">GITHUB</span><a href=\"#\">DylanSrz</a></li></ul>",
+      "css": ".ds-contacto { list-style: none; margin: 0; padding: 24px; background: #d4f03c; color: #16181a; } .ds-fila { display: grid; grid-template-columns: 8rem 1fr; align-items: center; gap: 2rem; padding: 1.25rem 0.5rem; border-top: 2px solid #16181a; background-image: linear-gradient(#16181a, #16181a); background-repeat: no-repeat; background-size: 100% 0%; background-position: bottom; transition: background-size 240ms cubic-bezier(0.3,0,0.1,1), color 240ms cubic-bezier(0.3,0,0.1,1); } .ds-fila:hover, .ds-fila:focus-within { background-size: 100% 100%; color: #d4f03c; } .ds-etq { font-family: 'Martian Mono', monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em; } .ds-fila a { font-family: 'Big Shoulders', 'Arial Narrow', sans-serif; font-weight: 800; font-size: 2.5rem; line-height: 1; color: inherit; text-decoration: none; } .ds-fila a:focus-visible { outline: 2px solid #16181a; outline-offset: -4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Manifiesto de Puerto",
+    "overview": "El sitio es el papeleo de una terminal de contenedores. Cada proyecto es una carga con código, tipo, rol, destino y estado. El nombre DYLANSRZ va pintado a todo lo ancho sobre acero corrugado, como el nombre de una naviera en el costado de un contenedor. Debajo empieza el manifiesto: una tabla de filas finas que se puede verificar.\n\nEl material es acero pintado en mate color grafito, pintura blanca cálida y una sola lima de seguridad. Las esquinas son rectas. No hay sombras, brillos ni vidrio. La profundidad viene del propio acero (costillas verticales y un foco de patio), no de capas que flotan. La lectura es densa y ordenada: reglas finas, datos en mono, títulos condensados en mayúsculas.\n\nEl movimiento es mecánico, como una grúa pórtico: barridos con `clip-path` y desplazamientos lineales. Nada rebota. Todo se apaga con `prefers-reduced-motion`.",
+    "keyCharacteristics": [
+      "Acero corrugado como textura del mundo (hero, Stack, cabecera de ficha).",
+      "Lima solo para \"en producción / disponible\".",
+      "Tríada tipográfica: display condensado, grotesca para leer, mono para datos.",
+      "Tablas y filas con reglas finas en vez de tarjetas.",
+      "Secciones de color plano: papel para Sobre mí, lima para Contacto.",
+      "Esquinas rectas, sin sombras."
+    ],
+    "rules": [
+      { "name": "La Ley de la Lima", "body": "La lima significa \"en producción / disponible\" y nada más. Un proyecto que no está en producción lleva un cuadrado vacío del color del texto. Nunca uses lima para decorar, para enlaces ni para hover. La única excepción es la sección de Contacto, que es la disponibilidad misma.", "section": "colors" },
+      { "name": "La Regla de la Pintura", "body": "Sobre acero, el texto es pintura cálida, nunca blanco puro. La selección y el foco también son pintura; sobre papel y lima pasan a tinta.", "section": "colors" },
+      { "name": "El Peso es Estado", "body": "En el manifiesto, la fila enfocada sube el peso variable del nombre de 700 a 900. El peso cambia para marcar foco, no para decorar.", "section": "typography" },
+      { "name": "Sin Antetítulos", "body": "Ningún título lleva una etiqueta pequeña encima. Las etiquetas mono son encabezados de columna o de lista, no adornos sobre un titular.", "section": "typography" },
+      { "name": "La Regla del Acero Plano", "body": "Nada flota. Las capas se separan con cambios de superficie (acero, papel, lima) y con reglas, nunca con sombras ni brillos.", "section": "elevation" },
+      { "name": "Un Solo Foco", "body": "Cada superficie de acero tiene una sola luz. No añadas resplandores ni halos de color.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do reserva la lima para \"en producción / disponible\" y para la sección de Contacto.",
+      "Do usa el acero corrugado como fondo de las superficies de marca (hero, Stack, cabecera de ficha).",
+      "Do usa papel (`pintura`) para Sobre mí y lima para Contacto, con texto en tinta.",
+      "Do anima con barridos de `clip-path` y la curva de grúa `cubic-bezier(0.3, 0, 0.1, 1)`, entre 180ms y 620ms.",
+      "Do desactiva toda animación y transición con `prefers-reduced-motion: reduce`.",
+      "Do muestra material real del repositorio cuando un proyecto no tiene captura.",
+      "Do da a cada proyecto un código de carga construido con datos reales."
+    ],
+    "donts": [
+      "Don't redondees esquinas ni uses botones en forma de píldora.",
+      "Don't uses sombras, brillos, vidrio ni degradados de color.",
+      "Don't pongas antetítulos sobre los títulos.",
+      "Don't uses lima como acento decorativo, para enlaces o para hover.",
+      "Don't agrupes proyectos en una rejilla de tarjetas; son filas de un manifiesto.",
+      "Don't uses movimientos con rebote o resorte.",
+      "Don't inventes capturas, métricas ni ilustraciones para proyectos que no las tienen."
+    ]
+  }
+}
