@@ -1,60 +1,538 @@
 @import "tailwindcss";
 
+/*
+  Mundo visual: terminal de contenedores.
+  Acero pintado en mate, pintura blanca cálida y una sola lima de seguridad.
+  Ley de color: la lima significa "en producción / disponible" y nada más.
+*/
 :root {
-  --papel: #f3efe6;
-  --papel-2: #e9e3d6;
-  --tinta: #16190f;
-  --tinta-2: #55584a;
-  --linea: #16190f26;
-  --senal: #c8430c;
-}
+  --acero-950: #101214;
+  --acero-900: #16181a;
+  --acero-800: #1d2023;
+  --acero-700: #24282b;
+  --acero-600: #2c3134;
+  --pintura: #efeadf;
+  --pintura-suave: #c6c7bf;
+  --pintura-tenue: #9a9e99;
+  --lima: #d4f03c;
+  --tinta: #16181a;
+  --tinta-suave: #3a3e40;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --papel: #12140e;
-    --papel-2: #1b1e15;
-    --tinta: #f0ecdf;
-    --tinta-2: #a5a795;
-    --linea: #f0ecdf24;
-    --senal: #ff7a3d;
-  }
+  --fondo: var(--acero-900);
+  --superficie: var(--acero-800);
+  --superficie-alta: var(--acero-700);
+  --texto: var(--pintura);
+  --texto-suave: var(--pintura-suave);
+  --texto-tenue: var(--pintura-tenue);
+  --acento: var(--lima);
+  --sobre-acento: var(--tinta);
+  --regla: color-mix(in srgb, var(--pintura) 16%, transparent);
+  --regla-fuerte: color-mix(in srgb, var(--pintura) 42%, transparent);
+
+  --costilla: 4.75rem;
+  --margen: clamp(1.25rem, 4vw, 3rem);
+  --alto-cabecera: 3.75rem;
+  --grua: cubic-bezier(0.3, 0, 0.1, 1);
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-papel: var(--papel);
-  --color-papel-2: var(--papel-2);
+  --color-fondo: var(--fondo);
+  --color-superficie: var(--superficie);
+  --color-superficie-alta: var(--superficie-alta);
+  --color-texto: var(--texto);
+  --color-suave: var(--texto-suave);
+  --color-tenue: var(--texto-tenue);
+  --color-acento: var(--acento);
+  --color-sobre-acento: var(--sobre-acento);
+  --color-regla: var(--regla);
+  --color-regla-fuerte: var(--regla-fuerte);
   --color-tinta: var(--tinta);
-  --color-tinta-2: var(--tinta-2);
-  --color-linea: var(--linea);
-  --color-senal: var(--senal);
-  --font-sans: var(--fuente-texto);
-  --font-mono: var(--fuente-mono);
-  --font-display: var(--fuente-titulo);
+  --color-tinta-suave: var(--tinta-suave);
+  --color-pintura: var(--pintura);
+  --font-sans: var(--fuente-texto), system-ui, sans-serif;
+  --font-mono: var(--fuente-mono), ui-monospace, monospace;
+  --font-display: var(--fuente-display), "Arial Narrow", sans-serif;
+  --font-estarcido: var(--fuente-estarcido), var(--fuente-display), sans-serif;
+  --breakpoint-3xl: 112rem;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 2rem;
+  scroll-padding-top: calc(var(--alto-cabecera) + 1rem);
+  background: var(--acero-950);
+  scrollbar-color: var(--acero-600) var(--acero-950);
 }
 
 body {
-  background: var(--papel);
-  color: var(--tinta);
+  background: var(--fondo);
+  color: var(--texto);
   font-family: var(--fuente-texto), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: var(--senal);
-  color: var(--papel);
+  background: var(--pintura);
+  color: var(--tinta);
 }
 
-a:focus-visible {
-  outline: 2px solid var(--senal);
+:focus-visible {
+  outline: 2px solid var(--pintura);
   outline-offset: 3px;
+}
+
+.sobre-lima :focus-visible,
+.sobre-papel :focus-visible {
+  outline-color: var(--tinta);
+}
+
+.sobre-lima ::selection,
+.sobre-papel ::selection {
+  background: var(--tinta);
+  color: var(--pintura);
+}
+
+a {
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+@layer components {
+  .contenedor {
+    width: 100%;
+    max-width: 112rem;
+    margin-inline: auto;
+    padding-inline: var(--margen);
+  }
+
+  /* Costado de contenedor: costillas verticales de acero pintado. */
+  .acero {
+    position: relative;
+    isolation: isolate;
+    background-color: var(--acero-700);
+    background-image: repeating-linear-gradient(
+      90deg,
+      var(--acero-700) 0 calc(var(--costilla) * 0.447),
+      var(--acero-800) calc(var(--costilla) * 0.447) calc(var(--costilla) * 0.5),
+      var(--acero-600) calc(var(--costilla) * 0.5) calc(var(--costilla) * 0.947),
+      #202427 calc(var(--costilla) * 0.947) var(--costilla)
+    );
+  }
+
+  /* Un único foco de patio: sigue al puntero cuando hay uno. */
+  .acero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        38rem circle at var(--luz-x, 78%) var(--luz-y, 8%),
+        color-mix(in srgb, var(--pintura) 11%, transparent),
+        transparent 70%
+      ),
+      linear-gradient(180deg, rgb(0 0 0 / 0.32), transparent 28%, transparent 68%, rgb(0 0 0 / 0.42));
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-variation-settings: "opsz" 72;
+    text-transform: uppercase;
+    line-height: 0.88;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+
+  .estarcido {
+    font-family: var(--font-estarcido);
+    font-weight: 700;
+    font-variation-settings: "opsz" 72;
+    text-transform: uppercase;
+    letter-spacing: 0.035em;
+    line-height: 1;
+  }
+
+  .dato {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .codigo {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    min-height: 2.875rem;
+    padding: 0.7rem 1.15rem;
+    border: 1.5px solid currentColor;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    transition: background-size 180ms var(--grua);
+  }
+
+  .boton > span {
+    transition: color 180ms var(--grua);
+  }
+
+  .boton svg {
+    transition: transform 180ms var(--grua);
+  }
+
+  .boton:hover,
+  .boton:focus-visible {
+    background-size: 100% 100%;
+  }
+
+  .boton:hover svg,
+  .boton:focus-visible svg {
+    transform: translate(2px, -2px);
+  }
+
+  /* Sobre fondo oscuro: el relleno entra en blanco y el texto pasa a tinta. */
+  .boton--claro {
+    color: var(--pintura);
+  }
+  .boton--claro:hover > *,
+  .boton--claro:focus-visible > * {
+    color: var(--tinta);
+  }
+
+  /* Sobre lima o papel: sólido en tinta. */
+  .boton--tinta {
+    color: var(--pintura);
+    background-color: var(--tinta);
+    border-color: var(--tinta);
+    background-image: linear-gradient(var(--acero-600), var(--acero-600));
+  }
+
+  .boton--linea-tinta {
+    color: var(--tinta);
+  }
+  .boton--linea-tinta:hover > *,
+  .boton--linea-tinta:focus-visible > * {
+    color: var(--pintura);
+  }
+
+  .enlace {
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+    transition: text-decoration-color 160ms linear;
+  }
+  .enlace:hover {
+    text-decoration-color: currentColor;
+  }
+
+  /* Marca de estado: el cuadrado lima solo existe en lo que está en producción. */
+  .estado {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .estado::before {
+    content: "";
+    width: 0.6rem;
+    height: 0.6rem;
+    flex: none;
+    border: 1.5px solid currentColor;
+  }
+  .estado--vivo {
+    color: var(--lima);
+  }
+  .estado--vivo::before {
+    background: var(--lima);
+    border-color: var(--lima);
+  }
+
+  /* ---------- Cabecera ---------- */
+  .cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: var(--alto-cabecera);
+    background: var(--acero-900);
+    border-bottom: 1px solid var(--regla);
+  }
+
+  .nav-enlace {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: var(--alto-cabecera);
+    color: var(--texto-suave);
+    transition: color 160ms linear;
+  }
+  .nav-enlace::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 -1px 0;
+    height: 3px;
+    background: var(--pintura);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 220ms var(--grua);
+  }
+  .nav-enlace:hover,
+  .nav-enlace[aria-current] {
+    color: var(--pintura);
+  }
+  .nav-enlace[aria-current]::after {
+    transform: scaleX(1);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero-acero {
+    container-type: inline-size;
+  }
+
+  .nombre {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-variation-settings: "opsz" 72;
+    text-transform: uppercase;
+    line-height: 0.8;
+    letter-spacing: -0.012em;
+    font-size: var(--nombre-talla, 27.4cqi);
+    white-space: nowrap;
+    margin-left: -0.035em;
+  }
+
+  .nombre span {
+    display: inline-block;
+  }
+
+  .franja {
+    background: var(--lima);
+    color: var(--tinta);
+  }
+
+  .franja .estado::before {
+    background: currentColor;
+  }
+
+  .pie-marca {
+    display: block;
+    line-height: 0.8;
+    white-space: nowrap;
+    text-align: center;
+    font-weight: 900;
+    letter-spacing: 0;
+    font-size: 25vw;
+    margin-bottom: -0.15em;
+  }
+
+  /* ---------- Manifiesto ---------- */
+  .carga {
+    position: relative;
+    border-top: 1px solid var(--regla-fuerte);
+    transition: opacity 220ms linear;
+  }
+
+  .carga > * {
+    min-width: 0;
+  }
+
+  .carga-nombre {
+    overflow-wrap: normal;
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 72, "wght" 700;
+    text-transform: uppercase;
+    line-height: 0.86;
+    letter-spacing: -0.005em;
+    transition: font-variation-settings 220ms var(--grua);
+  }
+
+  .carga-nombre a {
+    text-decoration: none;
+    outline: none;
+  }
+  .carga-nombre a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+  .carga:has(.carga-nombre a:focus-visible) {
+    outline: 2px solid var(--pintura);
+    outline-offset: 4px;
+  }
+
+  /* Controles que deben quedar por encima del enlace que cubre toda la fila. */
+  .carga .sobre,
+  .fila-contacto .sobre {
+    position: relative;
+    z-index: 1;
+  }
+
+  .placa {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--regla-fuerte);
+    background: var(--acero-800);
+  }
+  .placa img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 500ms var(--grua);
+  }
+
+  @media (hover: hover) {
+    .manifiesto:has(.carga:hover) .carga:not(:hover),
+    .manifiesto:has(.carga:focus-within) .carga:not(:focus-within) {
+      opacity: 0.4;
+    }
+    .carga:hover .carga-nombre,
+    .carga:focus-within .carga-nombre {
+      font-variation-settings: "opsz" 72, "wght" 900;
+    }
+    .carga:hover .placa img {
+      transform: scale(1.025);
+    }
+  }
+
+  /* ---------- Papel (Sobre mí) y lima (Contacto) ---------- */
+  .sobre-papel {
+    background: var(--pintura);
+    color: var(--tinta);
+    color-scheme: light;
+    --regla: color-mix(in srgb, var(--tinta) 18%, transparent);
+    --regla-fuerte: var(--tinta);
+    --texto-suave: var(--tinta-suave);
+  }
+
+  .sobre-lima {
+    background: var(--lima);
+    color: var(--tinta);
+    color-scheme: light;
+    --regla-fuerte: var(--tinta);
+  }
+
+  .fila-contacto {
+    position: relative;
+    border-top: 2px solid var(--tinta);
+    background-image: linear-gradient(var(--tinta), var(--tinta));
+    background-repeat: no-repeat;
+    background-size: 100% 0%;
+    background-position: bottom;
+    transition:
+      background-size 240ms var(--grua),
+      color 240ms var(--grua);
+  }
+  @media (hover: hover) {
+    .fila-contacto:hover,
+    .fila-contacto:focus-within {
+      background-size: 100% 100%;
+      color: var(--lima);
+    }
+  }
+  .fila-contacto a.principal {
+    outline-offset: -4px;
+  }
+  .fila-contacto a.principal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+}
+
+/* ---------- Movimiento: mecánico, como una grúa pórtico ---------- */
+@keyframes pintar {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 -10% 0);
+  }
+}
+
+@keyframes desplegar {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nombre span {
+    animation: pintar 520ms var(--grua) both;
+    animation-delay: calc(var(--i) * 55ms + 80ms);
+  }
+  .franja {
+    animation: desplegar 620ms var(--grua) 560ms both;
+  }
+  .hero-texto {
+    animation: aparecer 500ms linear 420ms both;
+  }
+
+  @supports (animation-timeline: view()) {
+    .placa--puerta {
+      animation: desplegar linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 70%;
+    }
+  }
+}
+
+::view-transition-group(*) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.3, 0, 0.1, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  :root {
+    --costilla: 3rem;
   }
 }
