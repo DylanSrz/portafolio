@@ -1,0 +1,99 @@
+{
+  "buildPath": "code",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-wall.html"
+        ],
+        "createdAt": "2026-11-16T20:41:52.382Z",
+        "reason": "model decision: unchosen decision-round sketch, not shipped; canon card intentionally depicts the category default"
+      },
+      {
+        "rule": "overused-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-wall.html"
+        ],
+        "createdAt": "2026-11-16T20:41:52.403Z",
+        "reason": "model decision: unchosen decision-round sketch, not shipped; canon card intentionally depicts the category default"
+      },
+      {
+        "rule": "skipped-heading",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-wall.html"
+        ],
+        "createdAt": "2026-11-16T20:41:52.458Z",
+        "reason": "model decision: unchosen decision-round sketch, not shipped; canon card intentionally depicts the category default"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/canon.html"
+        ],
+        "createdAt": "2026-11-16T20:41:52.465Z",
+        "reason": "model decision: unchosen decision-round sketch, not shipped; canon card intentionally depicts the category default"
+      },
+      {
+        "rule": "overused-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/canon.html"
+        ],
+        "createdAt": "2026-11-16T20:41:52.472Z",
+        "reason": "model decision: unchosen decision-round sketch, not shipped; canon card intentionally depicts the category default"
+      },
+      {
+        "rule": "skipped-heading",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/canon.html"
+        ],
+        "createdAt": "2026-11-16T20:41:52.515Z",
+        "reason": "model decision: unchosen decision-round sketch, not shipped; canon card intentionally depicts the category default"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-11-17T00:52:59.873Z",
+        "reason": "model decision: decision-round HTML sketch, not shipped; predates DESIGN.md"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-11-17T00:52:59.880Z",
+        "reason": "model decision: decision-round HTML sketch, not shipped; predates DESIGN.md"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-wall.html"
+        ],
+        "createdAt": "2026-11-17T00:52:59.887Z",
+        "reason": "model decision: decision-round HTML sketch, not shipped; predates DESIGN.md"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/canon.html"
+        ],
+        "createdAt": "2026-11-17T00:52:59.895Z",
+        "reason": "model decision: decision-round HTML sketch, not shipped; predates DESIGN.md"
+      }
+    ]
+  }
+}
